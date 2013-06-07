@@ -84,6 +84,11 @@ public class P5ImageServer extends Thread {
 			iw.setOutput(ios);
 			iw.write(null, new IIOImage(buffered_image, null, null), param);
 			setJpegData(bos.toByteArray());
+			
+			iw.dispose();
+			ios.close();
+			bos.close();
+			buffered_image = null;
 		} catch (IOException e) {
 			e.printStackTrace();
 			return false;
